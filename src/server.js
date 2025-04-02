@@ -38,7 +38,7 @@ app.post('/api/ultrasonic', (req, res) => {
 // GET route to serve the last recorded distance
 app.get('/distance', (req, res) => {
   if (lastDistance !== null) {
-    res.status(200).json({ distance: lastDistance , wasteLevel: 100 - Math.round((lastDistance / 55) * 100)});
+    res.status(200).json({ distance: lastDistance , wasteLevel: 100 - Math.round((lastDistance / 57) * 100)});
   } else {
     res.status(404).send({ message: 'No data available' });
   }
