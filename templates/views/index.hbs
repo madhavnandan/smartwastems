@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{title}}</h1>
+    </header>
+
+    <main>
+        <h3 style="display: none;" id="distance">{{distance}}</h3>
+
+        <h2>DustBin 1</h2>
+        <section class="waste-level">
+            <h2>Current Waste Level:</h2>
+            <div class="waste-progress">
+                <div class="progress-bar" style="width: 50%;"></div>
+            </div>
+            <p>Waste Level: <strong id="wastelevel"></strong></p>
+        </section>
+    </main>
+
+    <main>
+        <h2>DustBin 2</h2>
+        <section class="waste-level">
+            <h2>Current Waste Level:</h2>
+            <div class="waste-progress">
+                <div class="" style="width: 50%;"></div>
+            </div>
+            <p>Waste Level: <strong id=""></strong></p>
+        </section>
+    </main>
+
+    <script>
+           setInterval(() => {
+             fetch('/distance')
+               .then(response => response.json())
+               .then(data => {
+                 document.getElementById('distance').textContent = data.distance || 'No data available';
+                 document.getElementById('wastelevel').textContent = data.wasteLevel || 0;
+                 document.querySelector('.progress-bar').style.width = data.wasteLevel + '%';
+               });
+           }, 1000);  // Update every 5 seconds
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Smart Waste Management System Inc.</p>
+    </footer>
+</body>
+</html>
