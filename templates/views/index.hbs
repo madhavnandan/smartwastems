@@ -41,7 +41,7 @@
                .then(response => response.json())
                .then(data => {
                  document.getElementById('distance').textContent = data.distance || 'No data available';
-                 document.getElementById('wastelevel').textContent = data.wasteLevel || 0;
+                 document.getElementById('wastelevel').textContent = Math.abs(data.wasteLevel) || 0;
                  document.querySelector('.progress-bar').style.width = data.wasteLevel + '%';
                });
            }, 1000);  // Update every 5 seconds
